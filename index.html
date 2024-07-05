@@ -5,6 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tägliche Spanische Wortkombinationen</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Internes CSS kann hier ergänzt werden, falls benötigt */
+        /* Beispiel CSS für das Layout der Webseite */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+#word-pair {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+    </style>
 </head>
 <body>
     <div class="container">
@@ -20,5 +53,40 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Internes JavaScript kann hier ergänzt werden, falls benötigt
+        // Hier die URL zur externen JSON-Datei angeben
+const url = 'spanish-words.json';
+
+// Array für die Wörter initialisieren
+let words = [];
+
+// JSON-Daten laden und verarbeiten
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        words = data; // JSON-Daten in das words Array laden
+        generateWords(); // Initial eine Wortkombination generieren
+    })
+    .catch(error => console.error('Fehler beim Laden der Daten:', error));
+
+function getRandomWord() {
+    return words[Math.floor(Math.random() * words.length)];
+}
+
+function generateWords() {
+    const word1 = getRandomWord();
+    let word2 = getRandomWord();
+    while (word2.deutsch === word1.deutsch) {
+        word2 = getRandomWord(); // Sicherstellen, dass beide Wörter unterschiedlich sind
+    }
+
+    document.getElementById('word1').innerText = word1.deutsch;
+    document.getElementById('word2').innerText = word2.deutsch;
+    document.getElementById('combined').innerText = `${word1.deutsch}${word2.deutsch}`;
+    document.getElementById('translation1').innerText = `Übersetzung: ${word1.spanisch}`;
+    document.getElementById('translation2').innerText = `Übersetzung: ${word2.spanisch}`;
+}
+    </script>
 </body>
 </html>

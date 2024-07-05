@@ -3,38 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tägliche Wortkombinationen</title>
+    <title>Tägliche Spanische Wortkombinationen</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Tägliche Wortkombinationen</h1>
-    <div id="word-pair">
-        <p id="word1">Laden...</p>
-        <p id="word2">Laden...</p>
-        <p id="combined">Laden...</p>
+    <div class="container">
+        <h1>Tägliche Spanische Wortkombinationen</h1>
+        <div id="word-pair">
+            <p id="word1">Laden...</p>
+            <p id="word2">Laden...</p>
+            <p id="combined">Laden...</p>
+            <p id="translation1">Übersetzung: Laden...</p>
+            <p id="translation2">Übersetzung: Laden...</p>
+        </div>
+        <button onclick="generateWords()">Neue Wörter generieren</button>
     </div>
 
-    <script>
-        const dictionary = [
-            "Baum", "Haus", "Auto", "Flugzeug", "Wasser", "Feuer", "Erde", "Luft"
-            // Füge hier weitere Wörter hinzu
-        ];
-
-        function getRandomWord() {
-            return dictionary[Math.floor(Math.random() * dictionary.length)];
-        }
-
-        function updateWords() {
-            const word1 = getRandomWord();
-            const word2 = getRandomWord();
-            document.getElementById('word1').innerText = word1;
-            document.getElementById('word2').innerText = word2;
-            document.getElementById('combined').innerText = word1 + word2;
-        }
-
-        updateWords(); // Initialer Aufruf für die erste Anzeige
-
-        // Optional: Aktualisierung der Wörter z.B. alle 24 Stunden
-        setInterval(updateWords, 24 * 60 * 60 * 1000); // alle 24 Stunden
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
